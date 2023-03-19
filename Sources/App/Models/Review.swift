@@ -18,8 +18,6 @@ final class Review: Model, Content  {
     @ID(key:.id)
     var id: UUID? // PK
     
-    @Field(key: "title")
-    var title: String
     
     @Field(key: "body")
     var body: String
@@ -29,9 +27,8 @@ final class Review: Model, Content  {
     
     init() {}
     
-    init(id: UUID? = nil, title: String, body: String , bookId: UUID) {
+    init(id: UUID? = nil, body: String , bookId: UUID) {
         self.id = id
-        self.title = title
         self.body = body
         self.$book.id = bookId
 

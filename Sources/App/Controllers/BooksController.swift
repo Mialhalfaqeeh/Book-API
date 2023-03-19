@@ -21,6 +21,11 @@ final class BooksController {
         Book.query(on: req.db).all()
     }
     
+    func getid(req:Request) throws -> EventLoopFuture<Book> {
+                Book.find(req.parameters.get("bookId"), on: req.db)
+                    .unwrap(or: Abort(.notFound))
+    }
+    
     
     
     func updata(req:Request) throws -> EventLoopFuture<HTTPStatus> {
@@ -32,8 +37,10 @@ final class BooksController {
                     .flatMap {
                         $0.title = book.title
                         $0.cover = book.cover
+                        $0.edition = book.edition
                         return $0.update(on: req.db).transform(to: .ok)
                     }
+        
 
     }
 

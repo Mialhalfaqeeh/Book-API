@@ -21,20 +21,19 @@ final class Book: Model, Content  {
     var title: String
     
     
-//    @Field(key: "year")
-//    var year: String
-//    
-//    
+    @Field(key: "edition")
+    var edition: String
+   
     @Field(key: "cover")
     var cover: String
-//    
-//    
+
+    
 //    @Field(key: "pdf")
 //    var pdf: String
 
     
-//    @Children(for: \.$book)
-//    var reviews:[Review]
+    @Children(for: \.$book)
+    var reviews:[Review]
     
     init() {}
     

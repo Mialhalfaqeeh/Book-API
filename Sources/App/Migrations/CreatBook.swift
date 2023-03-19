@@ -19,9 +19,6 @@ struct CreatBook: Migration {
         database.schema("books") // table name
             .id()
             .field("title", .string) // column name
-           // .field("year", .string)
-          //  .field("cover", .string)
-          //  .field("pdf", .string)
             .create()
     }
     

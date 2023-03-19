@@ -17,8 +17,7 @@ struct CreatReview: Migration {
     func prepare(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
         database.schema("reviews") // table name
             .id()
-            .field("title", .string) // column name
-            .field("body", .string)
+            .field("body", .string)   // column name
             .field("book_id", .uuid, .references("books", "id"))
             .create()
     }
