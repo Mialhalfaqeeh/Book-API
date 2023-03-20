@@ -28,8 +28,8 @@ final class Book: Model, Content  {
     var cover: String
 
     
-//    @Field(key: "pdf")
-//    var pdf: String
+    @Field(key: "pdf")
+    var pdf: String
 
     
     @Children(for: \.$book)
