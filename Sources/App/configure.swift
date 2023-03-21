@@ -9,7 +9,7 @@ public func configure(_ app: Application) throws {
 
 
     
-    app.databases.use(.postgres(hostname: "localhost", username:"postgres",password:"1234", database:"bookdb"), as: .psql)
+    app.databases.use(.postgres(hostname: "localhost", username:"postgres",password:"", database:"bookdb"), as: .psql)
 
    
     app.migrations.add(CreatBook())
