@@ -27,7 +27,7 @@ struct CreatBook: Migration {
     func revert(on database: FluentKit.Database) -> NIOCore.EventLoopFuture<Void> {
         database.schema("books").delete() // drop the table
     }
-    
+   
     
 }
 

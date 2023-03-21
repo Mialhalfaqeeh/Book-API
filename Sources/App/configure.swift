@@ -16,7 +16,6 @@ public func configure(_ app: Application) throws {
     app.migrations.add(CreatReview())
     app.migrations.add(AddCoverCulumToBook())
     app.migrations.add(AddEditionCulumToBook())
-    app.migrations.add(AddPdfCulumToBook())
     // register routes
     try routes(app)
 }

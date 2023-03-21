@@ -11,6 +11,7 @@ import Vapor
 final class BooksController {
     
     
+    
     func create(req:Request) throws -> EventLoopFuture<Book> {
         let book = try req.content.decode(Book.self)
         return book.create(on: req.db).map { book }
@@ -22,7 +23,7 @@ final class BooksController {
     }
     
     func getid(req:Request) throws -> EventLoopFuture<Book> {
-                Book.find(req.parameters.get("bookId"), on: req.db)
+                Book.find(req.parameters.get("bookid"), on: req.db)  //"bookId"
                     .unwrap(or: Abort(.notFound))
     }
     
@@ -38,6 +39,7 @@ final class BooksController {
                         $0.title = book.title
                         $0.cover = book.cover
                         $0.edition = book.edition
+
                         return $0.update(on: req.db).transform(to: .ok)
                     }
         
@@ -46,7 +48,7 @@ final class BooksController {
 
     
     func delete(req:Request) throws -> EventLoopFuture<HTTPStatus> {
-        Book.find(req.parameters.get("bookId"), on: req.db).unwrap(or: Abort(.notFound))
+        Book.find(req.parameters.get("bookid"), on: req.db).unwrap(or: Abort(.notFound))
                     .flatMap {
                         $0.delete(on: req.db)
                     }.transform(to: .ok)

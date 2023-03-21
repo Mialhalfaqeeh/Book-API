@@ -5,7 +5,7 @@ func routes(_ app: Application) throws {
     
     
     let bookController = BooksController()
-    let reviewsController = ReviewsController()
+    
     
     // loclhost:8080/books  POST
     app.post("books", use: bookController.create)
@@ -20,22 +20,15 @@ func routes(_ app: Application) throws {
     
     
     // loclhost:8080/books/:bookId GET
-    app.get("books",":bookId", use: bookController.getid)
+    app.get("books",":bookid", use: bookController.getid)
     
     
     
     // loclhost:8080/books/:bookId DELETE
-    app.delete("books",":bookId", use: bookController.delete)
+    app.delete("books",":bookid", use: bookController.delete)
     
     
-    // loclhost:8080/reviews  POST
-    app.post("reviews", use: reviewsController.create)
     
-    
-    // loclhost:8080/reviews  GET
-    app.get("reviews", use: reviewsController.all)
-    
-
-    
+    try app.register(collection: ReviewsController())
     
 }
